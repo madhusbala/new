@@ -1,0 +1,68 @@
+// largestnumber.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	
+	int c[50];
+	int temp=0,i,j,l=5,g=0;	
+	printf("Enter the number of elements to be given:");
+	scanf("%d",&l);
+	printf("Enter the numbers:");
+	for(int h=0;h<l;h++)
+	{
+		scanf("%d",&c[h]);
+	}
+	
+	for(i=0;i<l;i++)
+	{g++;
+		for(j=g;j<l;j++)
+			{
+				if(c[i]<c[j])
+				{
+				temp=c[i];c[i]=c[j];c[j]=temp;
+				}
+		}
+		
+	}
+	for(i=0;i<l;i++)
+	{
+		printf("result:%d\n",c[i]);
+	}
+printf("The second largest number is: %d\n",c[1]);
+
+
+ 
+	// using pointers//
+	int c[50];
+	int temp=0,i,j,l=5,g=0,*ptr1;	
+	printf("Enter the number of elements to be given:");scanf("%d",&l);
+	ptr1=c;
+	printf("Enter the numbers:");
+	for(int h=0;h<l;h++)
+	{
+		scanf("%d",&c[h]);
+	}	
+	for(i=0;i<l;i++)
+	{
+	g++;
+		for(j=g;j<l;j++)
+			{
+				if(*ptr1 < *(c+j))
+				{
+					temp=*ptr1;
+					*ptr1=*(c+j);
+					*(c+j)=temp;
+				}
+		}
+		ptr1++;
+	}
+	for(i=0;i<l;i++)
+	{
+		printf("result:%d\n",*(c+i));
+	}
+printf("The second largest number is: %d\n",*(c+1));
+}
