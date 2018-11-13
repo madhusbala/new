@@ -1,0 +1,67 @@
+// atm.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+#define size 50
+
+
+class ATM
+{
+	int cardfromuser;
+public:
+	void insertcard(int a,int b, int c,char st[size],char st1[size])
+	{
+		if(b == a)
+			cout<<"Welcome, "<<st[size];
+		else
+			cout<<"Welcome, "<<st1[size];
+	}
+
+};
+
+class customer
+{
+public:
+	char name[size];
+	int accno;
+	int pin;
+	int bal;
+	int card;
+
+	customer ()
+	{		name[size]=0;accno=0;pin=0;bal=0;card=0;	}
+	
+
+   customer	customer_details(char b[size],int c, int d, int e, int f)
+	{
+		name[size]=b[size];accno=c;pin=d;bal=e;card=f;
+
+	}
+   customer insertcard(int a,int b, int c,char st[size],char st1[size])
+	{
+		if(b == a)
+			cout<<"Welcome, "<<st[size];
+		else
+			cout<<"Welcome, "<<st1[size];
+	}
+
+	customer(int g){card=g;}
+}c1,c2;
+
+
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	customer ();
+	c1.customer_details("Rathna",201800000000,1234,20000,0001);
+	customer ();
+	c2.customer_details("Vincy",201811111111,5678,25000,0002);
+	int card_user;
+	cout<<"Enter the card number:";
+	cin>>card_user;
+	customer.insertcard(card_user,c1.card,c2,card,c1.name,c2.name);
+}
+
