@@ -1,0 +1,71 @@
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+class example
+{
+	int i,j;
+	char z;
+public:
+
+	example()
+	{
+		cout<<"Default Consructor of base class"<<"\n";
+	}
+
+	example(int n)
+	{
+		cout<<"This is a constructor 1 of base class"<<"\n";
+	i=n;
+	cout<<"The number is"<<i<<"\n";
+	}
+
+	~example()
+	{
+		cout<<"This is a destructor of base class"<<"\n";
+	}
+
+	example(int n1, char a)
+	{
+		cout<<"This is a constructor 2 of base class"<<"\n";
+	j=n1;
+	z=a;
+	cout<<"The number is"<<j<<"\n";
+	cout<<"The char is :"<<a<<"\n";
+	}
+	void print()
+	{
+		cout<<"hi";
+	}
+};
+class dexample: public example
+{
+	int i,j;
+	char z;
+public:
+
+	dexample()
+	{
+		cout<<"Default Consructor of dervied class"<<"\n";
+	}
+
+
+	~dexample()
+	{
+		cout<<"This is a destructor of derived class"<<"\n";
+	}
+
+};
+
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	example e1;
+	example e2(10); 
+	example e3(4,'i');
+	e1.print();
+	dexample d1;
+}
+

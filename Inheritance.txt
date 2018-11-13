@@ -1,0 +1,180 @@
+// inheritance car.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include<iostream>
+#include<string.h>
+#include<iomanip>
+#include<sstream>
+using namespace std;
+
+
+	class Car // Base class
+{
+private:
+	long nr;
+	string producer;
+public: // Constructor:
+	Car(long n = 0L, const string& prod = "")
+	{
+		nr=n;
+		producer=prod;
+		//cout<<"object created";
+	}
+	~Car()
+	{
+		cout<<"destructed";
+
+	}
+	// Access methods:
+	
+	
+	long getNr(void) const 
+	{
+		//cout<<"enter the number";
+		return nr;
+	}
+	void setNr(long n) 
+	{
+		nr=n;
+		//cin>>nr;
+	}
+
+	
+	
+	const string& getProd() const 
+	{
+		//cout<<"enter the producer";
+		return producer;
+	}
+	void setProd(const string& p) 
+	{
+		producer=p;
+		
+	}
+
+	void display(void) const 
+	{
+		cout<<"The car number is: "<<getNr()<<"\n";
+		cout<<"the producer is: "<<producer<<"\n";
+	}
+
+};
+
+class PassCar : public Car // Derived class
+{
+private:
+	string passCarType;
+	bool sunRoof;
+public: // Constructor:
+	PassCar(const string& tp, bool sd,
+		int n = 0, const string& h = "")
+	{   setNr(n);
+		setProd(h);
+		passCarType=tp;
+		sunRoof=sd;
+	}
+	
+	~PassCar()
+{
+		cout<<"the pass car is destructed";
+	}
+
+	// Access methods:
+	const string& getType()
+	{
+		//cout<<"enter type of car";
+		return passCarType;
+	}
+	
+	void setType(const string s)
+	{
+		passCarType=s;
+      // cin>>passCarType;
+	}
+	
+	bool getSunRoof() const
+	{
+		return sunRoof ;
+	}
+	void setSunRoof(bool b)
+	{
+		sunRoof=b;
+		
+	}
+	
+	void display() const
+	{
+		
+		cout<<"passcartype: "<<passCarType<<"\n";
+		cout<<"roof: "<<sunRoof;
+	}
+	
+		//cout<<"the producer is"<<producer;
+	
+};
+//PassCar::PassCar(const string& tp, bool sd,
+		//int n = 0, const string& h = "")
+	//{
+        
+	//}
+class truck:public Car 
+{
+	private:
+	int axle;
+	double capacity;
+public:
+	truck()
+	{
+		//setNr(number);
+		//setProd(name);
+		
+	}
+	~truck()
+	{
+	}
+
+		
+	void setAxles( int a )
+	{
+		axle=a;
+	}
+	int getAxles() const
+	{
+		return axle;
+	}
+	void setCapacity( double cp )
+	{
+		capacity=cp;
+	}
+	double getCapacity() const
+	{
+		return capacity;
+	}
+	void display() const
+	{
+		//cout<<"The truck number is: "<<getNr()<<"\n";
+		//cout<<"the producer is: "<<producer<<"\n";
+		cout<<"axle is: "<<axle<<"\n";
+		cout<<"capacity is:" <<capacity<<"\n";
+	}
+};
+
+int main()
+{
+	const PassCar beetle("Beetle", false, 3421, "VW");
+	beetle.display();
+	cout << "\nAnd the passenger car number again: "
+		<< beetle.getNr() << endl;
+	PassCar cabrio("Carrera", true);
+	cabrio.setNr(1000);
+	cabrio.setProd("Porsche");
+	cabrio.display();
+	cout << "\nOnly data of the base class: ";
+	cabrio.Car::display();
+	truck h ;
+	h.setAxles(2);
+	h.setCapacity(3.0);
+	h.display();
+	return 0;
+}

@@ -1,0 +1,30 @@
+// iooperations.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+int  main()
+{
+	string line;
+	ifstream inp("example.txt");
+		while(!inp.eof())
+		{
+			getline(inp,line);
+			cout<<line<<endl;
+		}
+
+        
+char a;
+	cout<<"Enter the stream:";
+	while((a=cin.get())!='\n')
+	{
+		cout.put(a);
+	}
+
+	return 0;
+}
+

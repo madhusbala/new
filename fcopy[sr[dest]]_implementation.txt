@@ -1,0 +1,51 @@
+// filecopy.cpp : Defines the entry point for the console application.
+//
+`
+#include "stdafx.h"
+#include<iostream>
+#include<fstream>
+#include<sstream>
+using namespace std;
+
+
+int main(int argc,char *argv[])
+{
+	std::ifstream obj2("abc.txt");
+	std::ofstream obj3("efg.txt");
+	string line;
+	char buf[10];
+	switch(argc)
+	{
+		case 1:
+		cout<<"Enter the input stream";
+		char a;
+		while((a=cin.get())!='\n')
+		{
+			cout.put(a);
+		}
+		break;
+		case 2:
+			{
+			cout<<"output:"<<"\n";
+			while(!obj2.eof())
+			{
+				getline(obj2,line);
+				cout<<line<<endl;
+			}
+			}
+			break;
+		case 3:
+			{
+				obj2.read(buf,10);
+			if(obj2.gcount()>0)
+			{
+				
+				obj3.write(buf,obj2.gcount());
+			}
+			obj2.close();
+			obj3.close();
+			}
+			cout<<"stream copied from 1 file to other"<<"\n";
+			break;
+	}
+}

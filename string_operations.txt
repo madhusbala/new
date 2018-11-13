@@ -1,0 +1,72 @@
+// string.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+class string
+{
+private:
+	char *s;int size;
+public:
+string(const char *str = NULL);
+~string() 
+{
+delete[] s;
+};
+string(const string&);
+void operator=(const string&);	void print()
+{
+cout<<s << endl;
+}
+void change(const char *);
+};
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	string s1("This is string1");
+	string s2 = s1;
+	string s3("This is string3");
+
+	s1,print();
+	s2.print();
+	s2.change("This is string2");
+	cout<<"Assignment operation\n";
+	s3=s2;
+	s1.print();
+	s2.print();
+	s3.print();
+	return 0;
+}
+
+string::string(const char *str = NULL)
+{
+	size=strlen(str);
+	s=new char[size+1];
+	strcpy(s,str);
+	
+}
+string::string(const string &str)
+	{
+		~string();
+		size=strlen(str.s);
+		s = new[size]; 
+		strcpy(s,str.s);
+	}
+
+void string:: change(const char *str)
+{
+	size=strlen(str);
+	s=new char[size+1];
+	strcpy(s,str);
+	}
+void operator=(const string& another)
+{
+	cout<<"assignment";
+	char *s=new char[strlen(another.s)+1);
+	strcpy(s,another.s);
+
+}

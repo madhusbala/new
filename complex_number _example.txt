@@ -1,0 +1,59 @@
+// complexnumber.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+
+class cmplx_num
+{
+	float r_p, im_p;
+public:
+	cmplx_num()
+	{
+		r_p=0;
+		im_p=0;
+	}
+	cmplx_num(float i)
+	{
+		r_p = i;
+		im_p = 0;
+		cout<<"The complex number is:"<<r_p<<"+"<<im_p<<"i\n";
+	}
+	cmplx_num(float a1, float b1)
+	 {
+		 r_p = a1;
+		 im_p = b1;
+		 cout<<"The complex number is:"<<r_p<<im_p<<"i\n";
+	 }
+
+	cmplx_num add_num(cmplx_num to_use)
+	{
+		cmplx_num t;
+		t.r_p = r_p + to_use.r_p;
+		t.im_p = im_p + to_use.im_p;
+		cout<<"The complex number after addition is:"<<t.r_p<<" "<<t.im_p<<"i\n";
+		return t;
+	}
+	cmplx_num sub_num(cmplx_num to_use)
+	{
+		cmplx_num t;
+		t.r_p = r_p - to_use.r_p;
+		t.im_p = im_p - to_use.im_p;
+		cout<<"The complex number after subtraction is:"<<t.r_p<<" "<<t.im_p<<"i\n";
+		return t;
+	}
+};
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	cmplx_num a(10.0,-2.0);
+	cmplx_num b(-2);
+	cmplx_num c;
+	c=a.add_num(b);
+	cmplx_num d=c.sub_num(b);
+
+
+}
+
