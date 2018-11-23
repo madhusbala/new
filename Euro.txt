@@ -1,0 +1,119 @@
+// conversion operator.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include<iostream>
+#include<stdio.h>
+#include<iomanip>
+#include<sstream>
+#include<string.h>
+using namespace std;
+
+
+
+
+class Euro
+{
+private:
+	long data; //  Euros * 100 + Cents
+public:
+	
+	Euro(int euro = 0, int cents = 0)
+	{
+		data=euro*100+cents;
+		cout<<"result:"<<data;
+	}
+	Euro(double x)
+	{
+	data= x*100;
+	}
+	long getWholePart()  
+	{
+		long wholeres=data/100;
+		return wholeres;
+	}
+	int getCents()  
+	{
+		int centsres=data%100;
+		return centsres;
+	}
+	double asDouble()  
+	{
+		data=double(data);
+		return data;
+	}
+	string asString() const; // Euro as string.
+
+	void print(ostream& os) const // Output to stream os.
+	{
+		os << asString() << " Euro" << endl;
+	}
+	Euro& operator-()  
+	{
+		//long temp=data;
+		data=-data;
+		return  *this;
+
+	}
+	Euro&  operator+(const  Euro& e2)  
+	{
+		data=data+e2.data;
+		return  *this;
+	}
+	Euro& operator-(const  Euro& e2)  
+	{
+		data=data - e2.data;
+        return *this;
+	}
+	Euro& operator+=(const  Euro& e2)
+	{
+		data+=e2.data;
+		return  *this;
+	}
+	Euro& operator-=(const Euro& e2) 
+	{
+		data-=e2.data;
+		return  *this;
+	}
+};
+inline string Euro::asString() const // Euro as string
+{
+	stringstream strStream; // Stream for conversion
+	long temp = data;
+	if (temp < 0) { strStream << '-'; temp = -temp; }
+	strStream << temp / 100 << ','
+		<< setfill('0') << setw(2) << temp % 100;
+	return strStream.str();
+}
+
+int main()
+{
+	cout << "* * * Testing the class Euro * * *\n" << endl;
+	Euro wholesale(20, 50), retail;
+	retail = wholesale; // Standard assignment
+	retail += 9.49; // += (Euro)9.49
+	cout << "Wholesale price: ";
+	wholesale.print(cout);
+	cout << "Retail price: ";
+	retail.print(cout);
+
+	Euro discount(2.10); // double-constructor
+	retail -= discount;
+	cout << "\nRetail price including discount: ";
+	retail.print(cout);
+	wholesale = 34.10;
+	cout << "\nNew wholesale price: ";
+	wholesale.print(cout);
+	Euro profit(retail - wholesale); // Subtraction and
+	
+	// copy constructor
+	cout << "\nThe profit: ";
+	profit.print(cout); // Negative! 
+	
+double res =wholesale.asDouble();
+cout<<"double converted:"<<res;
+	long res1=wholesale getWholePart();
+	//cout<<"getwholepart:"<<res1;
+    //o1.getCents();
+	return 0;
+}
