@@ -1,0 +1,55 @@
+// stack.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include <iostream>
+using namespace std;
+#define s 10
+
+class STACK
+{
+	public:
+
+	int a[s];
+	int pos;
+
+	STACK() { pos=0; }
+	void push(int in)
+	{
+		if(pos == s) 
+			cout<<"Stack is full\n";
+		else
+		{
+			a[pos++]=in;
+			cout<<"the element is pushed\n";
+		}
+	}
+	void pop()
+	{
+		if(pos == 0)
+			cout<<"Stack is empty";
+		else
+		{
+			a[pos--]=0;
+			cout<<"the element is popped\n";
+		}
+	}
+};
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+
+	STACK stack1;
+	stack1.push(10);
+	stack1.push(12);
+	stack1.pop();
+	//cout<<stack1.a;
+	cout<<"Array elements are";
+	for(int i=0;i<s;i++)
+	{
+		cout<<"%d"<<a[i];
+	}
+
+}
+
