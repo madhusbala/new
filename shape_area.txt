@@ -1,0 +1,44 @@
+// shapesarea.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include<iostream>
+using namespace std;
+
+
+class area
+{public:
+area(float b1=0, float b2=0, float b3=0){cout<<"getarea:"<<b1*b2*b3<<"\n";}
+	virtual void getarea(){cout<<"*getArea*"<<"\n";}
+};
+class cube:public area
+{
+public:
+	float length,width,height;
+	cube(float l,float b,float h)
+	{length=l;width=b;height=h;}
+	void getarea(){cout<<"area of cube:"<<6*height<<"\n";}
+	void getvol(){cout<<"volume of cube"<<length*width*height<<"\n";}
+};
+class triangle:public area
+{
+public:
+	float base,height;
+	triangle(float b1, float b2){base=b1;height=b2;}
+	void getarea(){cout<<"area of triangle:"<<(0.5)*base*height<<"\n";}
+};
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	/*cube c1(1,2,3);
+	cout<<"cube***";
+	c1.getarea();*/
+	area *ptr;
+	ptr = new cube(1,2,3);
+	cout << "Cube area is:"<<"\n";
+	ptr->getarea();
+	ptr = new triangle(5,2);
+	cout << "Triangle area is:"<<"\n";
+	ptr->getarea();
+}
+
