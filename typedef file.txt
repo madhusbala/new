@@ -1,0 +1,14 @@
+// typedef.cpp : Defines the entry point for the console application.
+//
+
+#include "stdafx.h"
+#include "typedef.h"
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	f32 a=2.5,b=3.0,c;
+	c=a+b;
+	printf("The result is:%f\n",c);
+}
+
